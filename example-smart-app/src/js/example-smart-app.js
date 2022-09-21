@@ -16,22 +16,12 @@
            type: 'Observation',
            query: {
              code: {
-               $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',
-                     'http://loinc.org|8480-6', 'http://loinc.org|2085-9',
-                     'http://loinc.org|2089-1', 'http://loinc.org|55284-4']
+               $or: ['http://loinc.org|8302-2', 'http://loinc.org|8462-4',    //height, dbp
+                     'http://loinc.org|8480-6', 'http://loinc.org|2085-9',    //sbp, hdl
+                     'http://loinc.org|2089-1', 'http://loinc.org|55284-4']   //ldl, sbp-dbp
              }
            }
          });
-
-        // Previous UW values for lymph
-        //var obv = smart.patient.api.fetchAll({
-        //  type: 'Observation',
-        //  query: {
-        //    code: {
-        //      $or: ['http://loinc.org|26478-8', 'http://loinc.org|2345-7']
-        //    }
-        //  }
-        //});
 
         console.log('patient:');
         console.log(patient)
@@ -41,11 +31,12 @@
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           console.log("byCodes:");
-          console.log(byCodes('8480-6'));
-          console.log(byCodes('8462-4'));
+          console.log(byCodes('8480-6'));   //sbp
+          console.log(byCodes('8462-4'));   //dbp
 
           var gender = patient.gender;
 
+          // patient first name and last name
           var fname = '';
           var lname = '';
 
@@ -58,8 +49,8 @@
           // lymph = byCodes('26478-8');
           // Cerner SoF Tutorial Observations
            var height = byCodes('8302-2');
-           var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
-           var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
+           //var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
+           //var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
            var hdl = byCodes('2085-9');
            var ldl = byCodes('2089-1');
 
@@ -77,13 +68,13 @@
           // Cerner SoF Tutorial Observations
           p.height = getQuantityValueAndUnit(height[0]);
 
-          if (typeof systolicbp != 'undefined')  {
-            p.systolicbp = systolicbp;
-          }
+         // if (typeof systolicbp != 'undefined')  {
+           // p.systolicbp = systolicbp;
+         // }
 
-          if (typeof diastolicbp != 'undefined') {
-            p.diastolicbp = diastolicbp;
-          }
+         // if (typeof diastolicbp != 'undefined') {
+           // p.diastolicbp = diastolicbp;
+         // }
 
           p.hdl = getQuantityValueAndUnit(hdl[0]);
           p.ldl = getQuantityValueAndUnit(ldl[0]);
