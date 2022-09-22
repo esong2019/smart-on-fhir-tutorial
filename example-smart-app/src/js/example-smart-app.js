@@ -70,7 +70,7 @@
           p.lname = lname;
 
           // Cerner SoF Tutorial Observations
-          p.height = getQuantityValueAndUnit(Math.round(height[0] * 100)/100);
+          p.height = getQuantityValueAndUnit(height[0]);
 
          // if (typeof systolicbp != 'undefined')  {
            // p.systolicbp = systolicbp;
