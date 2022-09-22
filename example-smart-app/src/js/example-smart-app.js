@@ -3,7 +3,7 @@
       var ret = $.Deferred();
   
       function onError() {
-        console.log('Loading error', arguments);
+        //console.log('Loading error', arguments);
         ret.reject();
       }
   
@@ -33,14 +33,14 @@
             }
           });
   
-          console.log('patient:');
-          console.log(patient)
+          //console.log('patient:');
+          //console.log(patient)
   
           $.when(pt, obv).fail(onError);
   
           $.when(pt, obv).done(function(patient, obv) {
             var byCodes = smart.byCodes(obv, 'code');
-            console.log("byCodes:");
+            //console.log("byCodes:");
             //console.log(byCodes('8480-6'));   //sbp
            // console.log(byCodes('8462-4'));   //dbp
   
@@ -88,8 +88,8 @@
   
             p.hdl = getQuantityValueAndUnit(hdl[0]);
             p.ldl = getQuantityValueAndUnit(ldl[0]);
-            console.log('p:');
-            console.log(p);
+            //console.log('p:');
+            //console.log(p);
             ret.resolve(p);
           });
         } else {
