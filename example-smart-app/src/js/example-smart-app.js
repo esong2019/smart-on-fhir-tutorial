@@ -27,7 +27,7 @@
             type: 'Observation',
             query: {
               code: {
-                $or: ['http://loinc.org|8302-2', 'http://loinc.org|39156-5', 'http://loinc.org|29463-7',        //height, weight, bmi
+                $or: ['http://loinc.org|8302-2', 'http://loinc.org|39156-5', 'http://loinc.org|29463-7',        //height, bmi, weight
                       'http://loinc.org|2085-9', 'http://loinc.org|2089-1']   //hdl, ldl
               }
             }
@@ -61,8 +61,8 @@
              var height = byCodes('8302-2');
              //var systolicbp = getBloodPressureValue(byCodes('55284-4'),'8480-6');
              //var diastolicbp = getBloodPressureValue(byCodes('55284-4'),'8462-4');
-             var weight = byCodes('39156-5');
-             var bmi = byCodes('29463-7');
+             var weight = byCodes('29463-7');
+             var bmi = byCodes('39156-5');
              var hdl = byCodes('2085-9');
              var ldl = byCodes('2089-1');
   
