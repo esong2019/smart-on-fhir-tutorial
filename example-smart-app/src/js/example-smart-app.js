@@ -32,6 +32,20 @@
               }
             }
           });
+        
+          //new
+          var medOrder = smart.patient.api.fetchAll({
+            type: 'MedicationOrder',
+            query: {
+                _count=50
+            }
+          });
+
+          $.when(pt, medOrder).fail(onError);
+          
+          $.when(pt, medOrder).done(function(patient, medOrder) {
+            console.log(medOrder);
+          });
   
           //console.log('patient:');
           //console.log(patient)
