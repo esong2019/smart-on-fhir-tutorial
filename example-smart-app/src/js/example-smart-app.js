@@ -1,3 +1,5 @@
+
+
 (function(window){
     window.extractData = function() {
       var ret = $.Deferred();
@@ -44,7 +46,7 @@
           $.when(pt, medOrder).fail(onError);
           
           $.when(pt, medOrder).done(function(patient, medOrder) {
-            console.log(medOrder);
+            var med = "success";
           });
   
           //console.log('patient:');
@@ -186,6 +188,7 @@
       //$('#diastolicbp').html(p.diastolicbp);
       $('#ldl').html(p.ldl);
       $('#hdl').html(p.hdl);
+      $('#meds').html(med);
     };
   
   })(window);
